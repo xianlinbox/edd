@@ -5,14 +5,6 @@ require 'haml'
 class MyApp < Sinatra::Application
   enable :sessions
 
-  configure :production do
-    set :haml, {:ugly => true}
-    set :clean_trace, true
-  end
-
-  configure :development do
-  end
-
   helpers do
     include Rack::Utils
     alias_method :h, :escape_html

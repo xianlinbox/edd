@@ -4,5 +4,5 @@ class Group
   property :name, String
   property :create_at, DateTime, :default => Time.now
 
-  has n, :dependencies
+  has n, :urlDependencies
 end
