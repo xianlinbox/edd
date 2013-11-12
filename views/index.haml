@@ -1,0 +1,40 @@
+%div(id="logo" class="row" )
+  %div(class="container" )
+    %h1 Enterprise Dependency Dashboard
+    %p Monitor all the dependencies in your project.
+%hr
+%div(id="button_group" class="row" )
+  %div(class="col-xs-12 col-md-12 text-right" )
+    %a(class="btn btn-primary" href="#add_monitor" data-toggle="modal" )Add Monitor
+    %a(class="btn btn-info" href="#add_group" data-toggle="modal" )Add Group
+
+%div(id="groups" class="row" )
+
+%div(class="modal fade" id="add_monitor" )
+  %div(class="modal-dialog" )
+    %div(class="modal-content" )
+      %div(class="modal-header" )
+        %a(class="close" data-dismiss="modal") &times;
+        %h3 Add Monitor
+      %div(class="modal-body" )
+        %div
+          %label(class="col-xs-4 control-label" )Service Type:
+          %div(class="col-xs-8" )
+      %div(class="modal-footer" )
+        %a(class="btn btn-primary"  href=""  data-dismiss="modal" )Add
+
+%div(class="modal fade" id="add_group" )
+  %div(class="modal-dialog" )
+    %div(class="modal-content" )
+      %div(class="modal-header" )
+        %a(class="close" data-dismiss="modal") &times;
+        %h3 Add Group
+      %div(class="modal-body" )
+        %form(class="form-horizontal" role="form" method="post" action="/group" )
+          %div(class="form-group" )
+            %label(class="col-xs-4 control-label" ) Group Name:
+            %div(class="col-xs-8" )
+              %input(type="text" class="form-control" name="foodName" id="foodName" )
+
+      %div(class="modal-footer" )
+        %a(class="btn btn-primary"  href=""  data-dismiss="modal" )Add

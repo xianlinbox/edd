@@ -1,0 +1,7 @@
+tmp
+db/*.sqlite3
+log/*.log
+.lock
+
+.DS_Store
+*.swp
