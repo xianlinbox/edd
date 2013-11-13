@@ -4,6 +4,8 @@ require 'haml'
 
 class MyApp < Sinatra::Application
   enable :sessions
+  set :service_types, ['URL','DB','REST','SOAP','MessageQueue','Custom']
+  set :db_types, ['ORACLE','MYSQL','DB2','SQL_SERVER','PostgreSQL']
 
   helpers do
     include Rack::Utils

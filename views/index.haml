@@ -24,9 +24,71 @@
         %a(class="close" data-dismiss="modal") &times;
         %h3 Add Monitor
       %div(class="modal-body" )
-        %div
+        %div(class="col-xs-12" )
           %label(class="col-xs-4 control-label" )Service Type:
           %div(class="col-xs-8" )
+            %select(id="service_type_select" class="form-control" )
+              - @service_types.each do |service_type|
+                %option #{service_type}
+        %br
+        %div(class="col-xs-12" )
+          %label(class="col-xs-4 control-label" )Group:
+          %div(class="col-xs-8" )
+            %select(class="form-control" )
+              - @groups.each do |group|
+                %option(value="" ) #{group.name}
+        %hr
+        %div(id="URL_dependency_form" class="col-xs-12 hidden" )
+          %form(class="form-horizontal" id="url_dependency_form" role="form" method="post" action="/url_dependency" )
+            %div(class="form-group" )
+              %label(class="col-xs-4 control-label" ) Name:
+              %div(class="col-xs-8" )
+                %input(type="text" class="form-control" name="dependency_name" id="dependency_name" )
+            %div(class="form-group" )
+              %label(class="col-xs-4 control-label" ) URL:
+              %div(class="col-xs-8" )
+                %input(type="text" class="form-control" name="url" id="url" )
+            %div(class="form-group" )
+              %label(class="col-xs-4 control-label" ) Schedule:
+              %div(class="col-xs-8" )
+                %div(class="input-group" )
+                  %input(type="number" class="form-control" name="schedule" id="schedule" )
+                  %span(class="input-group-addon" )s
+
+        %div(id="DB_dependency_form" class="col-xs-12 hidden" )
+          %form(class="form-horizontal" id="db_dependency_form" role="form" method="post" action="/db_dependency" )
+            %div(class="form-group" )
+              %label(class="col-xs-4 control-label" ) Name:
+              %div(class="col-xs-8" )
+                %input(type="text" class="form-control" name="dependency_name" id="dependency_name" )
+            %div(class="form-group" )
+              %label(class="col-xs-4 control-label" ) DB Type:
+              %div(class="col-xs-8" )
+                %select(class="form-control" )
+                  - @db_types.each do |db_type|
+                    %option #{db_type}
+            %div(class="form-group" )
+              %label(class="col-xs-4 control-label" ) URL:
+              %div(class="col-xs-8" )
+                %input(type="text" class="form-control" name="url" id="url" )
+            %div(class="form-group" )
+              %label(class="col-xs-4 control-label" ) Username:
+              %div(class="col-xs-8" )
+                %input(type="text" class="form-control" name="url" id="url" )
+            %div(class="form-group" )
+              %label(class="col-xs-4 control-label" ) Password:
+              %div(class="col-xs-8" )
+                %input(type="password" class="form-control" name="url" id="url" )
+            %div(class="form-group" )
+              %label(class="col-xs-4 control-label" ) Schedule:
+              %div(class="col-xs-8" )
+                %div(class="input-group" )
+                  %input(type="number" class="form-control" name="schedule" id="schedule" )
+                  %span(class="input-group-addon" )s
+        %div(id="REST_dependency_form" class="col-xs-12 hidden" ) REST
+        %div(id="SOAP_dependency_form" class="col-xs-12 hidden" ) SOAP
+        %div(id="MessageQueue_dependency_form" class="col-xs-12 hidden" ) MessageQueue
+        %div(id="Custom" class="col-xs-12 hidden" ) Custom
       %div(class="modal-footer" )
         %a(class="btn btn-primary"  href=""  data-dismiss="modal" )Add
 
