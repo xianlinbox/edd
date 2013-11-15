@@ -2,7 +2,9 @@ class UrlDependency
   include DataMapper::Resource
   property :id, Serial
   property :name, String
+  property :description, String
   property :url, String
   property :schedule, Integer
-  property :create_at, DateTime, :default => Time.now
+
+  belongs_to :group
 end

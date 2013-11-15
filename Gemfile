@@ -11,5 +11,10 @@ end
 group :development, :test do
   gem "sqlite3"
   gem "dm-sqlite-adapter"
+  gem 'unicorn'
+  gem 'rspec'
+  gem 'rack'
+  gem 'rack-test'
+  gem 'ZenTest'
 end
 
