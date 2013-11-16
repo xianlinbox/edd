@@ -21,17 +21,27 @@ class MyApp < Sinatra::Application
   end
 
   post '/url_dependency' do
-    puts "************"+params[:group_id]
-
     group = Group.get(params[:group_id])
+
     url_dependency = UrlDependency.create(:name => params[:dependency_name],
+                                          :description => params[:description],
                                           :url => params[:url],
-                                          :schedule => params[:schedule],
+                                          :schedule => params[:schedule]
     )
     group.url_dependencies << url_dependency
-    group.save
+    if !group.save
+      group.errors.each do |e|
+        puts e
+      end
+    end
     redirect '/'
+  end
+
+  get '/url_dependency/status/:id' do
+    url_dependency = UrlDependency.get(params[:id])
+    UrlDependencyChecker.validate(url_dependency.url)
   end
 end
 
 require_relative 'models/init'
+require_relative 'helpers/init'
