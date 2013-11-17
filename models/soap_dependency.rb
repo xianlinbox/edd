@@ -1,13 +1,14 @@
-class DBDependency
+class SoapDependency
   include DataMapper::Resource
   property :id, Serial
   property :name, String
   property :description, String
-  property :type, String
-  property :url, String
+  property :endpoint, String
   property :username, String
   property :password, String
-  property :table, String
+  property :request, Text
+  property :timeout, Integer
   property :schedule, Integer
-  property :create_at, DateTime, :default => Time.now
+
+  belongs_to :group
 end

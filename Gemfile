@@ -1,8 +1,11 @@
 source 'http://rubygems.org'
 gem 'sinatra'
+gem "nokogiri"
 gem 'data_mapper'
 gem 'haml'
 gem 'faraday'
+gem 'mysql'
+gem 'ruby-oci8'
 
 group :production do
   gem "pg"

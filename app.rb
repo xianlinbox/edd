@@ -39,7 +39,7 @@ class MyApp < Sinatra::Application
 
   get '/url_dependency/status/:id' do
     url_dependency = UrlDependency.get(params[:id])
-    UrlDependencyChecker.validate(url_dependency.url)
+    UrlDependencyChecker.validate(url_dependency)
   end
 end
 
