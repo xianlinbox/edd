@@ -1,0 +1,17 @@
+%div
+  %label Database Type:
+  %select(id="db_type_select")
+    - db_types.each do |db_type|
+      %option #{db_type}
+%div
+  %label Database URL:
+  %input(type="url" id="db_monitor_url" )
+%div
+  %label Username:
+  %input(type="text" id="db_monitor_username" )
+%div
+  %label Password:
+  %input(type="text" id="db_monitor_password" )
+%div
+  %label Validate SQL:
+  %textarea(id="db_monitor_sql" )

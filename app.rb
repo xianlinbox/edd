@@ -6,7 +6,7 @@ require 'sinatra/partial'
 class MyApp < Sinatra::Application
   register Sinatra::Partial
   enable :sessions
-  set :service_types, ['URL', 'DB', 'REST', 'SOAP', 'MQ', 'Custom']
+  set :service_types, ['URL', 'Database', 'REST', 'SOAP', 'MQ', 'Custom']
   set :db_types, ['ORACLE', 'MYSQL', 'DB2', 'SQL_SERVER', 'PostgreSQL']
 
   get '/' do
