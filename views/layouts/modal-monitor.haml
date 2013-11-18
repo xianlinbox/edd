@@ -1,0 +1,58 @@
+.modal.monitor-url
+  .dialog
+    %header
+      %h3 Google.com
+      %span.close &times;
+    .body
+      %div
+        %label Description:
+        %p.with-show This is to validate if Google search function is available
+        %textarea.with-edit This is to validate if Google search function is available
+      %div
+        %label URL:
+        %label.with-show https://google.co.uk
+        %input.with-edit{:type => 'text', :value => 'https://google.co.uk'}
+      %div
+        %label Status:
+        %label Successful
+    %footer
+      %button.delete Delete
+      %button.edit Edit
+      %button.show Show
+.modal.monitor-database
+  .dialog
+    %header
+      %h3 Build env MySQL
+      %span.close &times;
+    .body
+      %div
+        %label Description:
+        %p MySQL database of Build environment
+      %div
+        %label Database Type:
+        %label MySQL
+      %div
+        %label Database URL:
+        %label mysql://build.internal/build
+      %div
+        %label Status:
+        %label Disabled
+    %footer
+      %button.delete Delete
+.modal.monitor-rest
+  .dialog
+    %header
+      %h3 Github REST
+      %span.close &times;
+    .body
+      %div
+        %label Description:
+        %p Github REST Service
+      %div
+        %label REST URL:
+        %label https://api.github.com/v2
+      %div
+        %label Status:
+        %label Failed
+    %footer
+      %button.delete Delete

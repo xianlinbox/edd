@@ -1,8 +1,10 @@
 # encoding: utf-8
 require 'sinatra'
 require 'haml'
+require 'sinatra/partial'
 
 class MyApp < Sinatra::Application
+  register Sinatra::Partial
   enable :sessions
   set :service_types, ['URL', 'DB', 'REST', 'SOAP', 'MQ', 'Custom']
   set :db_types, ['ORACLE', 'MYSQL', 'DB2', 'SQL_SERVER', 'PostgreSQL']
@@ -14,7 +16,7 @@ class MyApp < Sinatra::Application
     haml :index
   end
 
-  post '/group' do
+  post '/groups' do
     new_group = Group.create(:name => params[:group_name])
     new_group.save
     redirect '/'

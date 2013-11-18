@@ -1,120 +1,21 @@
-%div(id="logo" class="row" )
-  %div(class="container" )
+!!! 5
+.container
+  %header
     %h1 Enterprise Dependency Dashboard
-    %p Monitor all the dependencies in your project.
-%hr
-%div(id="button_group" class="row" )
-  %div(class="col-xs-12 col-md-12 text-right" )
-    %a(class="btn btn-primary" href="#add_monitor" data-toggle="modal" )Add Monitor
-    %a(class="btn btn-info" href="#add_group" data-toggle="modal" )Add Group
-    %a(class="btn btn-info" onclick="refresh_url_monitor()" data-toggle="modal" )Refresh
-%hr
-- if @groups !=nil
-  %div(id="groups" class="row" )
-    %div(class="panel-group" )
+    %h2 Monitor all the dependencies in your project.
+  %nav
+    %button.show-monitor Add Monitor
+    %button.show-group Add Region
+    %button(onclick="refresh_url_monitor()" ) Refresh
+  .main
+    - if @groups !=nil
       - @groups.each do |group|
-        %div(class="panel panel-info" )
-          %div(class="panel-heading" ) #{group.name}
-          %div(class="panel-body" ) The dependencies belong to this group:
-          - group.url_dependencies.each do |url_dependency|
-            %div(class="panel-body" )
-              %div(class="panel panel-primary" id="url_dependency_monitor_#{url_dependency.id}" )
-                %div(class="panel-heading" ) #{url_dependency.name}
-                %div(class="panel-body" )
-                  #{url_dependency.url}
-        %br
+        .box.active
+          %h3 #{group.name}
+          .content
+            - group.url_dependencies.each do |url_dependency|
+              %section.monitor.icon.url.success(id="url_dependency_monitor_#{url_dependency.id}" )
+                %h4 #{url_dependency.name}
 
-%div(class="modal fade in" id="add_monitor" tabindex="-1" role="dialog" aria-hidden="true")
-  %div(class="modal-dialog" )
-    %div(class="modal-content" )
-      %div(class="modal-header" )
-        %a(class="close" data-dismiss="modal") &times;
-        %h3 Add Monitor
-      %div(class="modal-body" )
-        %div(class="col-xs-12" )
-          %label(class="col-xs-4 control-label" )Service Type:
-          %div(class="col-xs-8" )
-            %select(id="service_type_select" class="form-control" )
-              - @service_types.each do |service_type|
-                %option #{service_type}
-        %br
-        %div(class="col-xs-12" )
-          %label(class="col-xs-4 control-label" )Group:
-          %div(class="col-xs-8" )
-            %select(class="form-control" id="group_select" )
-              - @groups.each do |group|
-                %option(value="#{group.id}" ) #{group.name}
-        %hr
-        %div(id="url_dependency_form_div" class="col-xs-12" )
-          %form(class="form-horizontal" id="url_dependency_form" role="form" method="post" action="/url_dependency" )
-            %div(class="form-group" )
-              %label(class="col-xs-4 control-label" ) Name:
-              %div(class="col-xs-8" )
-                %input(type="text" class="form-control" name="dependency_name" id="dependency_name" )
-            %div(class="form-group" )
-              %label(class="col-xs-4 control-label" ) Description:
-              %div(class="col-xs-8" )
-                %input(type="text" class="form-control" name="description" id="description" )
-            %div(class="form-group" )
-              %label(class="col-xs-4 control-label" ) URL:
-              %div(class="col-xs-8" )
-                %input(type="text" class="form-control" name="url" id="url" )
-            %div(class="form-group" )
-              %label(class="col-xs-4 control-label" ) Schedule:
-              %div(class="col-xs-8" )
-                %div(class="input-group" )
-                  %input(type="number" class="form-control" name="schedule" id="schedule" )
-                  %span(class="input-group-addon" )s
-
-        %div(id="db_dependency_div" class="col-xs-12 hidden" )
-          %form(class="form-horizontal" id="db_dependency_form" role="form" method="post" action="/db_dependency" )
-            %div(class="form-group" )
-              %label(class="col-xs-4 control-label" ) Name:
-              %div(class="col-xs-8" )
-                %input(type="text" class="form-control" name="dependency_name" id="dependency_name" )
-            %div(class="form-group" )
-              %label(class="col-xs-4 control-label" ) DB Type:
-              %div(class="col-xs-8" )
-                %select(class="form-control" )
-                  - @db_types.each do |db_type|
-                    %option #{db_type}
-            %div(class="form-group" )
-              %label(class="col-xs-4 control-label" ) URL:
-              %div(class="col-xs-8" )
-                %input(type="text" class="form-control" name="url" id="url" )
-            %div(class="form-group" )
-              %label(class="col-xs-4 control-label" ) Username:
-              %div(class="col-xs-8" )
-                %input(type="text" class="form-control" name="url" id="url" )
-            %div(class="form-group" )
-              %label(class="col-xs-4 control-label" ) Password:
-              %div(class="col-xs-8" )
-                %input(type="password" class="form-control" name="url" id="url" )
-            %div(class="form-group" )
-              %label(class="col-xs-4 control-label" ) Schedule:
-              %div(class="col-xs-8" )
-                %div(class="input-group" )
-                  %input(type="number" class="form-control" name="schedule" id="schedule" )
-                  %span(class="input-group-addon" )s
-        %div(id="rest_dependency_div" class="col-xs-12 hidden" ) REST
-        %div(id="soap_dependency_div" class="col-xs-12 hidden" ) SOAP
-        %div(id="mq_dependency_div" class="col-xs-12 hidden" ) MessageQueue
-        %div(id="custom" class="col-xs-12 hidden" ) Custom
-      %div(class="modal-footer" )
-        %a(class="btn btn-primary"  onclick="submit_form('url_dependency_form')"  data-dismiss="modal" )Add
-
-%div(class="modal fade" id="add_group" )
-  %div(class="modal-dialog" )
-    %div(class="modal-content" )
-      %div(class="modal-header" )
-        %a(class="close" data-dismiss="modal") &times;
-        %h3 Add Group
-      %div(class="modal-body" )
-        %form(class="form-horizontal" id="add_group_form" role="form" method="post" action="/group" )
-          %div(class="form-group" )
-            %label(class="col-xs-4 control-label" ) Group Name:
-            %div(class="col-xs-8" )
-              %input(type="text" class="form-control" name="group_name" id="group_name" )
-
-      %div(class="modal-footer" )
-        %a(class="btn btn-primary"  onclick="submit_form('add_group_form')"  data-dismiss="modal" )Add
+= partial 'layouts/modal-add'
+= partial 'layouts/modal-monitor'

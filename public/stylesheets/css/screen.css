@@ -1,0 +1,374 @@
+html, body {
+    position: relative;
+    margin: 0;
+    padding: 0;
+    min-height: 100%;
+    width: 100%;
+    height: 100%;
+}
+
+div, p, dl, dt, dd, ul, ol, li, h1, h2, h3, h4, h5, h6, pre, form, fieldset, input, textarea, p, blockquote, th, td, figure {
+    margin: 0;
+    padding: 0;
+}
+
+table {
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+
+fieldset, img {
+    border: 0;
+}
+
+select, button, input, textarea {
+    border: none;
+    outline: none;
+    padding: none;
+}
+
+select, button {
+    cursor: pointer;
+}
+
+address, caption, cite, code, dfn, th, var {
+    font-style: normal;
+    font-weight: normal;
+}
+
+ol, ul {
+    list-style: none;
+    margin: 0;
+}
+
+li {
+    list-style-type: none;
+    margin: 0;
+}
+
+caption, th {
+    text-align: left;
+}
+
+q:before, q:after {
+    content: '';
+}
+
+abbr, acronym {
+    border: 0;
+}
+
+form {
+    display: inline;
+}
+
+textarea:focus, input:focus {
+    outline: none;
+}
+
+article, aside, details, figcaption, figure, footer, header, hgroup, nav, section, address {
+    display: block;
+}
+
+.clear, .clearfloat {
+    clear: both;
+}
+
+* {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+* {
+    font-family: Arial, sans-serif;
+    font-weight: normal;
+}
+
+button {
+    height: 40px;
+    width: 100px;
+    color: white;
+    font-size: 14px;
+}
+
+.modal-backdrop {
+    background: rgba(0, 0, 0, 0.6);
+    height: 100%;
+    width: 100%;
+    top: 0;
+    left: 0;
+    position: fixed;
+    z-index: 10;
+}
+
+.modal {
+    display: none;
+    background: transparent;
+    height: 100%;
+    width: 100%;
+    top: 0;
+    left: 0;
+    position: fixed;
+    z-index: 20;
+}
+.modal .dialog {
+    background: white;
+    width: 600px;
+    margin: 100px auto;
+    padding: 20px;
+}
+.modal .dialog .with-edit, .modal .dialog .show {
+    display: none !important;
+}
+.modal .dialog .with-show, .modal .dialog .edit {
+    display: inline-block !important;
+}
+.modal .dialog.in-edit .with-edit, .modal .dialog.in-edit .show {
+    display: inline-block !important;
+}
+.modal .dialog.in-edit .with-show, .modal .dialog.in-edit .edit {
+    display: none !important;
+}
+.modal .dialog header {
+    padding: 10px 0;
+}
+.modal .dialog h3 {
+    display: inline-block;
+}
+.modal .dialog .close {
+    float: right;
+    cursor: pointer;
+    font-size: 20px;
+}
+.modal .dialog .close:hover {
+    color: #999999;
+}
+.modal .dialog .body {
+    padding: 10px 0;
+    border-bottom: 1px solid #ededed;
+}
+.modal .dialog .body label, .modal .dialog .body select, .modal .dialog .body input, .modal .dialog .body textarea, .modal .dialog .body p {
+    display: inline-block;
+    margin: 0 10px;
+    width: 200px;
+    font-size: 20px;
+    line-height: 30px;
+    color: #555555;
+}
+.modal .dialog .body select, .modal .dialog .body input, .modal .dialog .body textarea {
+    border: 1px solid #ededed;
+}
+.modal .dialog .body select:focus, .modal .dialog .body input:focus, .modal .dialog .body textarea:focus {
+    border: 1px solid dodgerblue;
+}
+.modal .dialog .body label {
+    display: inline-block;
+    vertical-align: top;
+}
+.modal .dialog .body select {
+    height: 30px;
+}
+.modal .dialog .body input {
+    height: 30px;
+}
+.modal .dialog .body textarea {
+    height: 100px;
+    line-height: 18px;
+    font-size: 14px;
+    resize: none;
+}
+.modal .dialog .body p {
+    width: 300px;
+}
+.modal .dialog .body div {
+    padding: 10px 0;
+}
+.modal .dialog footer {
+    padding: 10px 0;
+    overflow: hidden;
+}
+.modal .dialog footer button.submit {
+    float: right;
+    background: dodgerblue;
+}
+.modal .dialog footer button.submit:hover {
+    background: #51a9ff;
+}
+.modal .dialog footer button.delete {
+    background: #ed143d;
+}
+.modal .dialog footer button.delete:hover {
+    background: #f14364;
+}
+.modal .dialog footer button.edit {
+    float: right;
+    background: dodgerblue;
+}
+.modal .dialog footer button.edit:hover {
+    background: #51a9ff;
+}
+.modal .dialog footer button.show {
+    float: right;
+    background: #1aa093;
+}
+.modal .dialog footer button.show:hover {
+    background: #21ccbb;
+}
+
+.monitor-section {
+    display: none;
+}
+
+.container {
+    max-width: 1260px;
+    margin: 20px auto;
+    padding: 0 20px;
+}
+
+header {
+    border-bottom: 1px solid #ededed;
+}
+header h1, header h2 {
+    padding: 10px 0;
+}
+header h2 {
+    font-size: 16px;
+}
+
+nav {
+    padding: 20px 0;
+    text-align: right;
+    border-bottom: 1px solid #ededed;
+}
+nav button.show-monitor {
+    background: dodgerblue;
+}
+nav button.show-monitor:hover {
+    background: #51a9ff;
+}
+nav button.show-group {
+    background: #1aa093;
+}
+nav button.show-group:hover {
+    background: #21ccbb;
+}
+
+.main {
+    padding: 20px 0;
+}
+.main .box {
+    margin-bottom: 20px;
+    border: 1px solid lightskyblue;
+    position: relative;
+    -webkit-transition: 1s;
+    -moz-transition: 1s;
+    -o-transition: 1s;
+    transition: 1s;
+}
+.main .box:before {
+    content: "\e806";
+    font-family: fontello;
+    font-size: 26px;
+    line-height: 46px;
+    color: white;
+    position: absolute;
+    right: 10px;
+    top: 0;
+    -webkit-transition: all 1s;
+    -moz-transition: all 1s;
+    -o-transition: all 1s;
+    transition: all 1s;
+    -webkit-transform: rotate(540deg);
+    -moz-transform: rotate(540deg);
+    -ms-transform: rotate(540deg);
+    -o-transform: rotate(540deg);
+    transform: rotate(540deg);
+}
+.main .box h3 {
+    background: lightskyblue;
+    color: white;
+    padding: 10px 20px;
+}
+.main .box .content {
+    display: none;
+    padding: 10px 20px;
+}
+.main .box.active:before {
+    -webkit-transform: rotate(0deg);
+    -moz-transform: rotate(0deg);
+    -ms-transform: rotate(0deg);
+    -o-transform: rotate(0deg);
+    transform: rotate(0deg);
+}
+.main .box.active .content {
+    display: block;
+}
+
+.monitor {
+    display: inline-block;
+    width: 190px;
+    margin: 20px;
+    cursor: pointer;
+}
+.monitor.icon:before {
+    font-family: fontello;
+    color: white;
+    display: block;
+    font-size: 60px;
+    text-align: center;
+    width: 60px;
+    margin: 20px auto;
+    padding: 20px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.2);
+}
+.monitor.url:before {
+    content: "\e800";
+}
+.monitor.database:before {
+    content: "\e801";
+}
+.monitor.rest:before {
+    content: "\e805";
+}
+.monitor.soap:before {
+    content: "\e803";
+}
+.monitor.message-queue:before {
+    content: "\e802";
+}
+.monitor.custom:before {
+    content: "\e804";
+}
+.monitor.success {
+    background: yellowgreen;
+}
+.monitor.success:hover {
+    background: #aed75b;
+}
+.monitor.fail {
+    background: indianred;
+}
+.monitor.fail:hover {
+    background: #d98383;
+}
+.monitor.disabled {
+    background: #969696;
+}
+.monitor.disabled:hover {
+    background: #b0b0b0;
+}
+.monitor h4 {
+    text-align: center;
+    padding-bottom: 20px;
+    color: white;
+}
+
+@font-face {
+    font-family: "fontello";
+    src: url("../../fonts/fontello.eot");
+    src: url("../../fonts/fontello.eot#iefix") format("embedded-opentype"), url("../../fonts/fontello.woff") format("woff"), url("../../font/fontello.ttf?34821820") format("truetype"), url("../../fonts/fontello.svg#fontello") format("svg");
+    font-weight: normal;
+    font-style: normal;
+}

@@ -1,15 +1,9 @@
-!!!
-%html(lang="en" )
+!!! 5
+%html
   %head
-    %title Enterprise Dependency Dashboard
-    %meta(charset="utf-8")
-    %meta(name="viewport" content="width=device-width, initial-scale=1.0" )
-    %link(href="/bootstrap/css/bootstrap.min.css" rel="stylesheet" )
-    %link(href="/bootstrap/css/bootstrap-theme.min.css" rel="stylesheet" )
+    %link{:rel => "stylesheet", :href => "/stylesheets/css/screen.css"}
+    %script{:src => "/js/jquery-1.9.0.min.js"}
+    %script{:src => "/js/bootstrap.min.js"}
+    %script{:src => "/js/main.js"}
   %body
-    %div(id="wrap" )
-      %div(class="container")
-        =yield
-    %script(src="//code.jquery.com/jquery.js" )
-    %script(src="/bootstrap/js/bootstrap.min.js" )
-    %script(src="/js/app.js" )
+    =yield

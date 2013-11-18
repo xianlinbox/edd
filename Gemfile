@@ -5,7 +5,7 @@ gem 'data_mapper'
 gem 'haml'
 gem 'faraday'
 gem 'mysql'
-gem 'ruby-oci8'
+gem 'sinatra-partial'
 
 group :production do
   gem "pg"

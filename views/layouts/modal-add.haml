@@ -1,0 +1,55 @@
+.modal.add-monitor
+  .dialog
+    %header
+      %h3 Add Monitor
+      %span.close &times;
+    .body
+      %form
+        %div
+          %label Service Type:
+          %select.type
+            %option URL
+            %option Database
+            %option REST
+            %option SOAP
+            %option Message Queue
+            %option Custom
+        %div
+          %label Group:
+          %select
+            %option Virtual NPR
+        %div
+          %label Title:
+          %input{:type => 'text'}
+        %div
+          %label Description:
+          %textarea
+        .monitor-section.add-url
+          %div
+            %label URL:
+            %input{:type => 'url'}
+        .monitor-section.add-database
+          %div
+            %label Database Type:
+            %input{:type => 'text'}
+          %div
+            %label Database URL:
+            %input{:type => 'url'}
+        .monitor-section.add-rest
+          %div
+            %label REST URL:
+            %input{:type => 'url'}
+    %footer
+      %button.submit Add
+.modal.add-group
+  .dialog
+    %header
+      %h3 Add Group
+      %span.close &times;
+    .body
+      %form(method="post" action="/groups" id="add_group_form" )
+        %div
+          %label Region Name:
+          %input(type="text" name="group_name" )
+    %footer
+      %button.submit(onclick="submit_form('add_group_form')") Add
