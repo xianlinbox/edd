@@ -17,8 +17,6 @@ group :development, :test do
   gem "dm-sqlite-adapter"
   gem 'unicorn'
   gem 'rspec'
-  gem 'rack'
-  gem 'rack-test'
   gem 'ZenTest'
 end
 
