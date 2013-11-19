@@ -4,27 +4,25 @@
       %h3 Add Monitor
       %span.close &times;
     .body
-      %form(id='add_monitor_form')
+      %form(id="add_monitor_form" method="post" action="/dependencies")
         %div
           %label Service Type:
-          %select.type(id="service_type_select")
+          %select.type(id="service_type_select" name="service_type")
             - service_types.each do |service_type|
               %option #{service_type}
         %div
           %label Group:
-          %select(id="group_select")
+          %select(id="group_select" name="group_id")
             - groups.each do |group|
-              %option #{group.name}
+              %option(value="#{group.id}" ) #{group.name}
         %div
           %label Title:
-          %input(type="text" id="monitor_title" )
+          %input(type="text" id="monitor_title" name="monitor_title" )
         %div
           %label Description:
-          %textarea(id="monitor_description")
+          %textarea(id="monitor_description" name="monitor_description" )
         .monitor-section.add-url
-          %div
-            %label URL:
-            %input(type="url" id="url_monitor_url" )
+          = partial :'layouts/url_monitor'
         .monitor-section.add-database
           = partial :'layouts/db_monitor', locals:{db_types:db_types}
         .monitor-section.add-soap
@@ -34,7 +32,7 @@
             %label REST URL:
             %input(type="url" id="rest_monitor_url" )
     %footer
-      %button.submit Add
+      %button.submit(onclick="submit_form('add_monitor_form')" ) Add
 .modal.add-group
   .dialog
     %header

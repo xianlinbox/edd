@@ -114,7 +114,8 @@ button {
 }
 .modal .dialog {
     background: white;
-    width: 600px;
+    width: 900px;
+    max-height: 800px;
     margin: 100px auto;
     padding: 20px;
 }
@@ -145,16 +146,26 @@ button {
     color: #999999;
 }
 .modal .dialog .body {
+    overflow-y: scroll;
+    max-height: 500px;
     padding: 10px 0;
     border-bottom: 1px solid #ededed;
 }
 .modal .dialog .body label, .modal .dialog .body select, .modal .dialog .body input, .modal .dialog .body textarea, .modal .dialog .body p {
     display: inline-block;
     margin: 0 10px;
-    width: 200px;
     font-size: 20px;
     line-height: 30px;
     color: #555555;
+}
+.modal .dialog .body label {
+    width: 200px;
+}
+.modal .dialog .body select, .modal .dialog .body input, .modal .dialog .body textarea, .modal .dialog .body p {
+    width: 600px;
+}
+.modal .dialog .body label, .modal .dialog .body select, .modal .dialog .body input {
+    height: 30px;
 }
 .modal .dialog .body select, .modal .dialog .body input, .modal .dialog .body textarea {
     border: 1px solid #ededed;
@@ -166,20 +177,14 @@ button {
     display: inline-block;
     vertical-align: top;
 }
-.modal .dialog .body select {
-    height: 30px;
-}
-.modal .dialog .body input {
-    height: 30px;
-}
 .modal .dialog .body textarea {
     height: 100px;
     line-height: 18px;
     font-size: 14px;
     resize: none;
 }
-.modal .dialog .body p {
-    width: 300px;
+.modal .dialog .body textarea.long {
+    height: 300px;
 }
 .modal .dialog .body div {
     padding: 10px 0;
@@ -241,6 +246,13 @@ nav {
     text-align: right;
     border-bottom: 1px solid #ededed;
 }
+nav button.refresh {
+    float: left;
+    background: #ff7c47;
+}
+nav button.refresh:hover {
+    background: lightsalmon;
+}
 nav button.show-monitor {
     background: dodgerblue;
 }
@@ -289,6 +301,7 @@ nav button.show-group:hover {
     background: lightskyblue;
     color: white;
     padding: 10px 20px;
+    cursor: pointer;
 }
 .main .box .content {
     display: none;
@@ -303,6 +316,40 @@ nav button.show-group:hover {
 }
 .main .box.active .content {
     display: block;
+}
+.main .box .setting:before {
+    content: "\e807";
+    font-family: fontello;
+    font-size: 26px;
+    line-height: 46px;
+    color: white;
+    position: absolute;
+    right: 50px;
+    top: 0;
+}
+.main .box .setting-menu {
+    display: none;
+    background: lightskyblue;
+    width: 100px;
+    position: absolute;
+    right: 0;
+    z-index: 10;
+    -webkit-transition: all 1s;
+    -moz-transition: all 1s;
+    -o-transition: all 1s;
+    transition: all 1s;
+}
+.main .box .setting-menu.active {
+    display: block;
+}
+.main .box .setting-menu a {
+    display: block;
+    padding-left: 5px;
+    text-decoration: none;
+    color: white;
+    font-size: 20px;
+    line-height: 36px;
+    border-top: 1px solid white;
 }
 
 .monitor {

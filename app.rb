@@ -2,9 +2,11 @@
 require 'sinatra'
 require 'haml'
 require 'sinatra/partial'
+require File.dirname(__FILE__)+'/helpers/model_factory'
 
 class MyApp < Sinatra::Application
   register Sinatra::Partial
+  include ModelFactory
   enable :sessions
   set :service_types, ['URL', 'Database', 'REST', 'SOAP', 'MQ', 'Custom']
   set :db_types, ['ORACLE', 'MYSQL', 'DB2', 'SQL_SERVER', 'PostgreSQL']
@@ -22,20 +24,13 @@ class MyApp < Sinatra::Application
     redirect '/'
   end
 
-  post '/url_dependency' do
-    group = Group.get(params[:group_id])
-
-    url_dependency = UrlDependency.create(:name => params[:dependency_name],
-                                          :description => params[:description],
-                                          :url => params[:url],
-                                          :schedule => params[:schedule]
-    )
-    group.url_dependencies << url_dependency
-    if !group.save
-      group.errors.each do |e|
-        puts e
-      end
-    end
+  post '/dependencies' do
+    puts "*****" + params[:group_id]
+    puts "*****" + params[:service_type]
+    puts "*****" + params[:monitor_title]
+    puts "*****" + params[:monitor_description]
+    puts "*****" + params[:url_monitor_url]
+    send("create_#{params[:service_type]}_dependency", params)
     redirect '/'
   end
 

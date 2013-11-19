@@ -23,6 +23,9 @@ $(function () {
     $('.show').click(function () {
         $(this).parent().parent().removeClass('in-edit');
     });
+    $('a.setting').click(function(){
+        $(this).siblings(".setting-menu").toggleClass('active');
+    });
 
     refresh_url_monitor();
 });
@@ -44,9 +47,6 @@ function selectMonitorType() {
 }
 
 function submit_form(formid) {
-    var group_id = $('#group_select').val();
-    var group_input = $("<input>").attr("type", "hidden").attr("name", "group_id").val(group_id);
-    $('#' + formid).append($(group_input));
     $('#' + formid).submit();
 }
 

@@ -6,12 +6,16 @@
   %nav
     %button.show-monitor Add Monitor
     %button.show-group Add Region
-    %button(onclick="refresh_url_monitor()" ) Refresh
+    %button.refresh(onclick="refresh_url_monitor()" ) Refresh
   .main
     - if @groups !=nil
       - @groups.each do |group|
         .box.active
           %h3 #{group.name}
+          %a.setting{:href => "#"}
+          .setting-menu
+            %a{:href => "#"} Edit
+            %a{:href => "#"} Delete
           .content
             - group.url_dependencies.each do |url_dependency|
               %section.monitor.icon.url.success(id="url_dependency_monitor_#{url_dependency.id}" )
