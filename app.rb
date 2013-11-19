@@ -19,17 +19,11 @@ class MyApp < Sinatra::Application
   end
 
   post '/groups' do
-    new_group = Group.create(:name => params[:group_name])
-    new_group.save
+    create_group(params)
     redirect '/'
   end
 
   post '/dependencies' do
-    puts "*****" + params[:group_id]
-    puts "*****" + params[:service_type]
-    puts "*****" + params[:monitor_title]
-    puts "*****" + params[:monitor_description]
-    puts "*****" + params[:url_monitor_url]
     send("create_#{params[:service_type]}_dependency", params)
     redirect '/'
   end

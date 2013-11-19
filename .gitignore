@@ -1,6 +1,7 @@
 tmp
 db/*.db
 db/*.sqlite3
+spec/db/*.*
 log/*.log
 .lock
 .idea

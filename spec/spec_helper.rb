@@ -15,4 +15,6 @@ end
 
 RSpec.configure do |config|
   config.include Rack::Test::Methods
+  DataMapper::setup(:default, "sqlite3://#{Dir.pwd}/spec/db/test.db")
+  DataMapper.finalize.auto_upgrade!
 end
