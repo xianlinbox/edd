@@ -30,4 +30,22 @@ describe "Model Factory" do
     create_URL_dependency(params)
     UrlDependency.all(:group_id => group_id, :name => 'Baidu').length.should eq 1
   end
+
+
+  it "should insert soap dependency into the database" do
+    group_id = Group.all[0].id
+    params = {
+        :service_type => 'URL',
+        :group_id => group_id,
+        :monitor_title => 'Echo Service',
+        :monitor_description => 'test soap service',
+        :soap_monitor_endpoint => 'http://www.baidu.com',
+        :soap_monitor_username => 'admin',
+        :soap_monitor_password => 'admin',
+        :soap_monitor_request => 'test',
+        :soap_monitor_response => 'test'
+    }
+    create_SOAP_dependency(params)
+    SoapDependency.all(:group_id => group_id, :name => 'Echo Service').length.should eq 1
+  end
 end

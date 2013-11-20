@@ -7,6 +7,7 @@ class SoapDependency
   property :username, String
   property :password, String
   property :request, Text
+  property :response, Text
   property :timeout, Integer
   property :schedule, Integer
 

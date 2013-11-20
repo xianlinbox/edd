@@ -58,6 +58,8 @@ GEM
       data_objects (= 0.10.13)
     do_sqlite3 (0.10.13)
       data_objects (= 0.10.13)
+    equivalent-xml (0.3.0)
+      nokogiri (>= 1.4.3)
     faraday (0.8.4)
       multipart-post (~> 1.1)
     fastercsv (1.5.5)
@@ -108,6 +110,7 @@ DEPENDENCIES
   data_mapper
   dm-postgres-adapter
   dm-sqlite-adapter
+  equivalent-xml
   faraday
   haml
   mysql

@@ -17,6 +17,22 @@ module ModelFactory
     }
   end
 
+  def create_SOAP_dependency(params)
+    save_group(params) { |params|
+      group = Group.get(params[:group_id])
+      soap_dependency = SoapDependency.create(:name => params[:monitor_title],
+                                              :description => params[:monitor_description],
+                                              :endpoint => params[:soap_monitor_endpoint],
+                                              :username => params[:soap_monitor_username],
+                                              :password => params[:soap_monitor_password],
+                                              :request => params[:soap_monitor_request],
+                                              :response => params[:soap_monitor_response]
+      )
+      group.soap_dependencies << soap_dependency
+      group
+    }
+  end
+
   def save_group(params)
     group = yield(params)
     if !group.save

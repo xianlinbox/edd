@@ -5,4 +5,5 @@ class Group
   property :create_at, DateTime, :default => Time.now
 
   has n, :url_dependencies
+  has n, :soap_dependencies
 end

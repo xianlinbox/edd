@@ -22,11 +22,11 @@
           %label Description:
           %textarea(id="monitor_description" name="monitor_description" )
         .monitor-section.add-url
-          = partial :'layouts/url_monitor'
+          = partial :'layouts/add_url_monitor'
         .monitor-section.add-database
-          = partial :'layouts/db_monitor', locals:{db_types:db_types}
+          = partial :'layouts/add_db_monitor', locals:{db_types:db_types}
         .monitor-section.add-soap
-          = partial :'layouts/soap_monitor'
+          = partial :'layouts/add_soap_monitor'
         .monitor-section.add-rest
           %div
             %label REST URL:

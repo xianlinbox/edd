@@ -3,10 +3,12 @@ require 'sinatra'
 require 'haml'
 require 'sinatra/partial'
 require File.dirname(__FILE__)+'/helpers/model_factory'
+require File.dirname(__FILE__)+'/helpers/dependency_checker'
 
 class MyApp < Sinatra::Application
   register Sinatra::Partial
   include ModelFactory
+  include DependencyChecker
   enable :sessions
   set :service_types, ['URL', 'Database', 'REST', 'SOAP', 'MQ', 'Custom']
   set :db_types, ['ORACLE', 'MYSQL', 'DB2', 'SQL_SERVER', 'PostgreSQL']
@@ -28,11 +30,7 @@ class MyApp < Sinatra::Application
     redirect '/'
   end
 
-  get '/url_dependency/status/:id' do
-    url_dependency = UrlDependency.get(params[:id])
-    UrlDependencyChecker.validate(url_dependency)
+  get '/dependency/status/:service_type/:id' do
+    send("check_#{params[:service_type]}", params[:id])
   end
 end
-
-require_relative 'models/init'
-require_relative 'helpers/init'

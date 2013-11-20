@@ -15,12 +15,25 @@ describe 'Soap Dependency Checker' do
 </soapenv:Envelope>}
     end
 
+    def expect_response
+      %Q{
+<SOAP:Envelope xmlns:SOAP="http://schemas.xmlsoap.org/soap/envelope/" xmlns:echo="http://www.without-brains.net/echo">
+  <SOAP:Body>
+    <echo:EchoResponse>
+      <echo:Message>Hello World!</echo:Message>
+    </echo:EchoResponse>
+  </SOAP:Body>
+</SOAP:Envelope>}
+    end
+
+
     soap_dependency = SoapDependency.create(:name => "test",
-                                            :endpoint => "http://localhost:9292/echo_service",
-                                            :username => "",
-                                            :password => "",
-                                            :request => fake_request,
-                                            :timeout => 5)
+    :endpoint => "http://localhost:9292/echo_service",
+    :username => "admin",
+    :password => "admin",
+    :request => fake_request,
+    :response => expect_response,
+    :timeout => 5)
 
     SoapDependencyChecker.validate(soap_dependency).should eq 'success'
   end

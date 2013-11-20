@@ -23,11 +23,12 @@ $(function () {
     $('.show').click(function () {
         $(this).parent().parent().removeClass('in-edit');
     });
-    $('a.setting').click(function(){
+    $('a.setting').click(function () {
         $(this).siblings(".setting-menu").toggleClass('active');
     });
 
     refresh_url_monitor();
+    refresh_soap_monitor();
 });
 
 function bindModal(triggerButtonSelector, modalSelector) {
@@ -50,27 +51,40 @@ function submit_form(formid) {
     $('#' + formid).submit();
 }
 
-function update_status_with_ajax(monitor_id, element_id) {
-    $.ajax({url: '/url_dependency/status/' + monitor_id,
+function update_status_with_ajax(service_type, monitor_id, element_id) {
+    $.ajax({url: '/dependency/status/' + service_type + '/' + monitor_id,
             type: 'GET',
             async: true,
             success: function (data) {
                 if ('success' == data) {
-                    $('#' + element_id).attr('class', 'monitor icon url success');
+                    $('#' + element_id).attr('class', 'monitor icon ' + service_type + ' success');
                 } else {
-                    $('#' + element_id).attr('class', 'monitor icon url fail');
+                    $('#' + element_id).attr('class', 'monitor icon ' + service_type + ' fail');
                 }
             }
         }
     );
 }
 
+function refresh_status() {
+    var element_id = $(this).attr('id');
+    var service_type = element_id.substr(0, element_id.indexOf("_"))
+    var monitor_id = element_id.substr(element_id.lastIndexOf("_") + 1);
+    update_status_with_ajax(service_type, monitor_id, element_id);
+}
+
 function refresh_url_monitor() {
     $("section[id^='url_dependency_monitor_']").each(
         function () {
-            var element_id = $(this).attr('id');
-            var monitor_id = element_id.substr(element_id.lastIndexOf("_") + 1);
-            update_status_with_ajax(monitor_id, element_id);
+            refresh_status.call(this);
+        }
+    );
+}
+
+function refresh_soap_monitor() {
+    $("section[id^='soap_dependency_monitor_']").each(
+        function () {
+            refresh_status.call(this);
         }
     );
 }

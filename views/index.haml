@@ -20,6 +20,9 @@
             - group.url_dependencies.each do |url_dependency|
               %section.monitor.icon.url.success(id="url_dependency_monitor_#{url_dependency.id}" )
                 %h4 #{url_dependency.name}
+            - group.soap_dependencies.each do |soap_dependency|
+              %section.monitor.icon.soap.success(id="soap_dependency_monitor_#{soap_dependency.id}" )
+                %h4 #{soap_dependency.name}
 
 = partial :'layouts/modal-add', locals: {service_types: @service_types, groups:@groups, db_types:@db_types}
-= partial 'layouts/modal-monitor'
+= partial :'layouts/modal-monitor'

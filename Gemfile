@@ -6,6 +6,7 @@ gem 'haml'
 gem 'faraday'
 gem 'mysql'
 gem 'sinatra-partial'
+gem 'equivalent-xml'
 
 group :production do
   gem "pg"
