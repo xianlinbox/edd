@@ -1,12 +1,12 @@
 module ModelFactory
   def create_group(params)
-    save_group(params) { |params|
+    error_wrapper(params) { |params|
       Group.create(:name => params[:group_name])
     }
   end
 
   def create_URL_dependency(params)
-    save_group(params) { |params|
+    error_wrapper(params) { |params|
       group = Group.get(params[:group_id])
       url_dependency = UrlDependency.create(:name => params[:monitor_title],
                                             :description => params[:monitor_description],
@@ -18,7 +18,7 @@ module ModelFactory
   end
 
   def create_SOAP_dependency(params)
-    save_group(params) { |params|
+    error_wrapper(params) { |params|
       group = Group.get(params[:group_id])
       soap_dependency = SoapDependency.create(:name => params[:monitor_title],
                                               :description => params[:monitor_description],
@@ -33,12 +33,16 @@ module ModelFactory
     }
   end
 
-  def save_group(params)
+  def error_wrapper(params)
     group = yield(params)
     if !group.save
       group.errors.each do |e|
         puts e
       end
     end
+  end
+
+  def get_url_dependency(id)
+    UrlDependency.get(id)
   end
 end

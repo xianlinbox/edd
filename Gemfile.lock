@@ -109,10 +109,12 @@ DEPENDENCIES
   ZenTest
   data_mapper
   dm-postgres-adapter
+  dm-serializer
   dm-sqlite-adapter
   equivalent-xml
   faraday
   haml
+  json
   mysql
   nokogiri
   pg

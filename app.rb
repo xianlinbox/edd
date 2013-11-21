@@ -2,6 +2,7 @@
 require 'sinatra'
 require 'haml'
 require 'sinatra/partial'
+require 'dm-serializer'
 require File.dirname(__FILE__)+'/helpers/model_factory'
 require File.dirname(__FILE__)+'/helpers/dependency_checker'
 
@@ -32,5 +33,10 @@ class MyApp < Sinatra::Application
 
   get '/dependency/status/:service_type/:id' do
     send("check_#{params[:service_type]}", params[:id])
+  end
+
+  get '/dependency/:service_type/:id' do
+    dependency = send("get_#{params[:service_type]}_dependency", params[:id])
+    dependency.to_json
   end
 end

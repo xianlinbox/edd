@@ -7,6 +7,8 @@ gem 'faraday'
 gem 'mysql'
 gem 'sinatra-partial'
 gem 'equivalent-xml'
+gem 'json'
+gem 'dm-serializer'
 
 group :production do
   gem "pg"

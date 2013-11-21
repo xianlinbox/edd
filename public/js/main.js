@@ -4,8 +4,8 @@ $(function () {
     bindModal('.show-monitor', '.modal.add-monitor');
     bindModal('.show-group', '.modal.add-group');
 
-    $.each(['url', 'database', 'rest'], function (idx, elem) {
-        bindModal('.monitor.' + elem, '.modal.monitor-' + elem);
+    $.each(['url', 'database', 'rest', 'soap'], function (idx, elem) {
+        bindModalMonitor('.monitor.' + elem, '.modal.monitor-' + elem);
     });
 
     selectMonitorType();
@@ -34,6 +34,39 @@ $(function () {
 function bindModal(triggerButtonSelector, modalSelector) {
     $(triggerButtonSelector).click(function () {
         $(modalSelector).modal('show');
+    });
+    $(modalSelector + ' .close').click(function () {
+        $(modalSelector).modal('hide');
+    });
+}
+
+function update_modal_value_with_ajax(service_type, monitor_id, modalSelector, status) {
+    $.ajax({url: '/dependency/' + service_type + '/' + monitor_id,
+            type: 'GET',
+            dataType: 'json',
+            async: true,
+            success: function (data) {
+                $('#modal_header_' + service_type + '_monitor_name').text(data.name);
+                $.each(['show', 'edit'], function (idx, item) {
+                    $('#modal_' + service_type + '_monitor_name_' + item).text(data.name);
+                    $('#modal_' + service_type + '_monitor_description_' + item).text(data.description);
+                    $('#modal_' + service_type + '_monitor_url_' + item).text(data.url);
+                });
+                $('#modal_' + service_type + '_monitor_status').text(status);
+                $('#modal_' + service_type + '_monitor_delete');
+                $(modalSelector).modal('show');
+            }
+        }
+    );
+}
+function bindModalMonitor(triggerButtonSelector, modalSelector) {
+    $(triggerButtonSelector).click(function () {
+        var element_id = $(this).attr('id');
+        var service_type = element_id.substr(0, element_id.indexOf("_"));
+        var monitor_id = element_id.substr(element_id.lastIndexOf("_") + 1);
+        var class_str = $(this).attr('class');
+        var status = class_str.substr(class_str.lastIndexOf(" ") + 1);
+        update_modal_value_with_ajax(service_type, monitor_id, modalSelector, status);
     });
     $(modalSelector + ' .close').click(function () {
         $(modalSelector).modal('hide');

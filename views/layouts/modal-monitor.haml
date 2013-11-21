@@ -2,22 +2,26 @@
 .modal.monitor-url
   .dialog
     %header
-      %h3 Google.com
+      %h3(id="modal_header_url_monitor_name")
       %span.close &times;
     .body
       %div
+        %label Title:
+        %p.with-show(id="modal_url_monitor_name_show")
+        %textarea.with-edit(id="modal_url_monitor_name_edit")
+      %div
         %label Description:
-        %p.with-show This is to validate if Google search function is available
-        %textarea.with-edit This is to validate if Google search function is available
+        %p.with-show(id="modal_url_monitor_description_show")
+        %textarea.with-edit(id="modal_url_monitor_description_edit")
       %div
         %label URL:
-        %label.with-show https://google.co.uk
-        %input.with-edit{:type => 'text', :value => 'https://google.co.uk'}
+        %label.with-show(id="modal_url_monitor_url_show")
+        %input.with-edit(type="text" id="modal_url_monitor_url_edit")
       %div
         %label Status:
-        %label Successful
+        %label(id="modal_url_monitor_status")
     %footer
-      %button.delete Delete
+      %button.delete(id="modal_url_monitor_delete") Delete
       %button.edit Edit
       %button.show Show
 .modal.monitor-database
@@ -41,6 +45,23 @@
     %footer
       %button.delete Delete
 .modal.monitor-rest
+  .dialog
+    %header
+      %h3 Github REST
+      %span.close &times;
+    .body
+      %div
+        %label Description:
+        %p Github REST Service
+      %div
+        %label REST URL:
+        %label https://api.github.com/v2
+      %div
+        %label Status:
+        %label Failed
+    %footer
+      %button.delete Delete
+.modal.monitor-soap
   .dialog
     %header
       %h3 Github REST
