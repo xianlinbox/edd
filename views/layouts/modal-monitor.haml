@@ -8,7 +8,7 @@
       %div
         %label Title:
         %p.with-show(id="modal_url_monitor_name_show")
-        %textarea.with-edit(id="modal_url_monitor_name_edit")
+        %input.with-edit(id="modal_url_monitor_name_edit")
       %div
         %label Description:
         %p.with-show(id="modal_url_monitor_description_show")
@@ -64,17 +64,39 @@
 .modal.monitor-soap
   .dialog
     %header
-      %h3 Github REST
+      %h3(id="modal_header_soap_monitor_name")
       %span.close &times;
     .body
       %div
-        %label Description:
-        %p Github REST Service
+        %label Title:
+        %p(id="modal_soap_monitor_name_show")
+        %input.with-edit(type="text" id="modal_soap_monitor_name_edit")
       %div
-        %label REST URL:
-        %label https://api.github.com/v2
+        %label Description:
+        %p(id="modal_soap_monitor_description_show")
+        %textarea.with-edit(id="modal_soap_monitor_description_edit")
+      %div
+        %label Endpoint:
+        %label.with-show(id="modal_soap_monitor_endpoint_show")
+        %input.with-edit(type="text" id="modal_soap_monitor_endpoint_edit")
+      %div
+        %label Username:
+        %p(id="modal_soap_monitor_username_show")
+        %input.with-edit(type="text" id="modal_soap_monitor_username_edit")
+      %div
+        %label Password:
+        %p(id="modal_soap_monitor_password_show")
+        %input.with-edit(type="password" id="modal_soap_monitor_password_edit")
+      %div
+        %label Validate Request:
+        %p(id="modal_soap_monitor_request_show")
+        %textarea.with-edit(id="modal_soap_monitor_request_edit")
+      %div
+        %label Expect Response:
+        %p(id="modal_soap_monitor_response_show")
+        %textarea.with-edit(id="modal_soap_monitor_response_edit")
       %div
         %label Status:
-        %label Failed
+        %label(id="modal_soap_monitor_status")
     %footer
-      %button.delete Delete
+      %button.delete(id="modal_soap_monitor_delete") Delete

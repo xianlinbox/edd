@@ -45,4 +45,8 @@ module ModelFactory
   def get_url_dependency(id)
     UrlDependency.get(id)
   end
+
+  def get_soap_dependency(id)
+    SoapDependency.get(id)
+  end
 end

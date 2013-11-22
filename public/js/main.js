@@ -50,10 +50,24 @@ function update_modal_value_with_ajax(service_type, monitor_id, modalSelector, s
                 $.each(['show', 'edit'], function (idx, item) {
                     $('#modal_' + service_type + '_monitor_name_' + item).text(data.name);
                     $('#modal_' + service_type + '_monitor_description_' + item).text(data.description);
-                    $('#modal_' + service_type + '_monitor_url_' + item).text(data.url);
+
+                    switch (service_type) {
+                        case "url":
+                            $('#modal_' + service_type + '_monitor_url_' + item).text(data.url);
+                            break;
+                        case "soap":
+                            $('#modal_' + service_type + '_monitor_endpoint_' + item).text(data.endpoint);
+                            $('#modal_' + service_type + '_monitor_username_' + item).text(data.username);
+                            $('#modal_' + service_type + '_monitor_password_' + item).text(data.password);
+                            $('#modal_' + service_type + '_monitor_request_' + item).text(data.request);
+                            $('#modal_' + service_type + '_monitor_response_' + item).text(data.response);
+                            break;
+                        default:
+                            alert('Unsupport Operation!');
+                            break;
+                    }
                 });
                 $('#modal_' + service_type + '_monitor_status').text(status);
-                $('#modal_' + service_type + '_monitor_delete');
                 $(modalSelector).modal('show');
             }
         }
