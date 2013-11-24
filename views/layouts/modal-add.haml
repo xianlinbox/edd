@@ -28,9 +28,10 @@
         .monitor-section.add-soap
           = partial :'layouts/add_soap_monitor'
         .monitor-section.add-rest
-          %div
-            %label REST URL:
-            %input(type="url" id="rest_monitor_url" )
+          = partial :'layouts/add_rest_monitor'
+        .monitor-section.add-mq
+          = partial :'layouts/add_message_queue_monitor'
+
     %footer
       %button.submit(onclick="submit_form('add_monitor_form')" ) Add
 .modal.add-group
