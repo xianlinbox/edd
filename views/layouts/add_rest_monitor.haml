@@ -1,6 +1,17 @@
 %div
-  %label REST URL:
+  %label URL:
   %input(type="url" id="rest_monitor_url" )
+%div
+  %label HTTP verbs:
+  %select.type(id="rest_monitor_operation" name="rest_monitor_operation")
+    - ['GET','POST','PUT','DELETE'].each do |verb|
+      %option(value="#{verb}" ) #{verb}
+%div
+  %label Username:
+  %input(type="text" name="rest_monitor_username" id="rest_monitor_username" )
+%div
+  %label Password:
+  %input(type="password" name="rest_monitor_password" id="rest_monitor_password" )
 %div
   %label Payload:
   %textarea.long(id="rest_monitor_payload" name="rest_monitor_payload" )

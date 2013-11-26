@@ -67,7 +67,8 @@ function update_modal_value_with_ajax(service_type, monitor_id, modalSelector, s
                             break;
                     }
                 });
-                $('#modal_' + service_type + '_monitor_status').text(status);
+                $('#modal_' + service_type + '_monitor_status').text(status.toUpperCase());
+                $('#modal_' + service_type + '_monitor_delete').attr('href', '/dependency/' + service_type + '/' + monitor_id + '/delete');
                 $(modalSelector).modal('show');
             }
         }

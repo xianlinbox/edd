@@ -7,6 +7,7 @@ include ModelFactory
 describe "Model Factory" do
   before(:all) do
     UrlDependency.all.destroy
+    SoapDependency.all.destroy
     Group.all.destroy
   end
 
@@ -31,6 +32,11 @@ describe "Model Factory" do
     UrlDependency.all(:group_id => group_id, :name => 'Baidu').length.should eq 1
   end
 
+  it "should delete url dependency" do
+    dependency_id = UrlDependency.all[0].id
+    delete_url_dependency(dependency_id)
+    UrlDependency.all.length.should eq 0
+  end
 
   it "should insert soap dependency into the database" do
     group_id = Group.all[0].id
@@ -48,4 +54,11 @@ describe "Model Factory" do
     create_SOAP_dependency(params)
     SoapDependency.all(:group_id => group_id, :name => 'Echo Service').length.should eq 1
   end
+
+  it "should delete group" do
+    group_id = Group.all[0].id
+    delete_group(group_id)
+    Group.all.length.should eq 0
+  end
+
 end

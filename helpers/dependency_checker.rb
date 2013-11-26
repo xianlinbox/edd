@@ -11,6 +11,14 @@ module DependencyChecker
     end
   end
 
+  def check_rest(dependency_id)
+    url_dependency = UrlDependency.get(dependency_id)
+    error_wrapper(url_dependency) do |dependency|
+      res = Faraday.get(url_dependency.url)
+      res.status < 400 ? "success" : "fail"
+    end
+  end
+
   def check_soap(dependency_id)
     soap_dependency = SoapDependency.get(dependency_id)
     error_wrapper(soap_dependency) do |dependency|

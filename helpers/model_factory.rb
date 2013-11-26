@@ -42,11 +42,39 @@ module ModelFactory
     end
   end
 
+  def delete_group(id)
+    group = Group.get(id)
+    group.url_dependencies.each do |url_dependency|
+      url_dependency.destroy
+    end
+
+    group.soap_dependencies.each do |soap_dependency|
+      soap_dependency.destroy
+    end
+
+    if !group.destroy
+      puts group.id
+      puts group.url_dependencies.length
+      puts group.soap_dependencies.length
+      group.errors.each do |e|
+        puts e
+      end
+    end
+  end
+
   def get_url_dependency(id)
     UrlDependency.get(id)
   end
 
+  def delete_url_dependency(id)
+    UrlDependency.get(id).destroy
+  end
+
   def get_soap_dependency(id)
     SoapDependency.get(id)
+  end
+
+  def delete_soap_dependency(id)
+    SoapDependency.get(id).destroy
   end
 end

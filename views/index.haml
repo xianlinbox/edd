@@ -15,7 +15,7 @@
           %a.setting{:href => "#"}
           .setting-menu
             %a{:href => "#"} Edit
-            %a{:href => "#"} Delete
+            %a{:href => "/groups/#{group.id}/delete"} Delete
           .content
             - group.url_dependencies.each do |url_dependency|
               %section.monitor.icon.url.success(id="url_dependency_monitor_#{url_dependency.id}" )

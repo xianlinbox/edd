@@ -21,9 +21,10 @@
         %label Status:
         %label(id="modal_url_monitor_status")
     %footer
-      %button.delete(id="modal_url_monitor_delete") Delete
+      %button.delete
+        %a(id="modal_url_monitor_delete") Delete
       %button.edit Edit
-      %button.show Show
+      %button.show Save
 .modal.monitor-database
   .dialog
     %header
@@ -99,4 +100,5 @@
         %label Status:
         %label(id="modal_soap_monitor_status")
     %footer
-      %button.delete(id="modal_soap_monitor_delete") Delete
+      %button.delete
+        %a(id="modal_soap_monitor_delete") Delete

@@ -39,4 +39,9 @@ class MyApp < Sinatra::Application
     dependency = send("get_#{params[:service_type]}_dependency", params[:id])
     dependency.to_json
   end
+
+  get '/dependency/:service_type/:id/delete' do
+    send("delete_#{params[:service_type]}_dependency", params[:id])
+    redirect '/'
+  end
 end
